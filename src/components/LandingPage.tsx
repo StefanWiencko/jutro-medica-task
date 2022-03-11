@@ -8,17 +8,23 @@ import { FilterOptions } from "./FilterOptions";
 export const LandingPage: FC = () => {
   const [filterValue, setFilterValue] = useState({ input: "", select: "" });
   const { loading, error, data } = useContext(DataContext);
-  if (loading) return <h3>Loading...</h3>;
-  if (error) return <p>Error</p>;
+
   const filteredData = data?.countries.filter((country) => {
-    if (filterValue.select !== country.continent.name) {
-      return false;
-    }
-    if (!country.name.startsWith(filterValue.input)) {
-      return false;
-    }
+    const capitalizedInputValue =
+      filterValue.input.charAt(0).toUpperCase() + filterValue.input.slice(1);
+    const isDataMatchingInputValue =
+      filterValue.input === "" ||
+      country.name.startsWith(capitalizedInputValue);
+    const isDataMatchingSelectValue =
+      filterValue.select === "" ||
+      filterValue.select === country.continent.name;
+
+    if (!isDataMatchingSelectValue) return false;
+    if (!isDataMatchingInputValue) return false;
     return true;
   });
+  if (loading) return <h3>Loading...</h3>;
+  if (error) return <p>Error</p>;
   return (
     <div>
       <h2>Creative title</h2>
