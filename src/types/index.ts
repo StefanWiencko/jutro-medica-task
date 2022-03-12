@@ -1,5 +1,5 @@
 import { ApolloError } from "@apollo/client";
-interface Country {
+export interface Country {
   code: string;
   name: string;
   continent: Continent;
