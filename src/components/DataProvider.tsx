@@ -2,6 +2,7 @@ import { createContext, FC } from "react";
 import { ContextType, LandingPageData } from "../types";
 import { useQuery } from "@apollo/client";
 import { getLandingPageData } from "../queries";
+
 export const DataContext = createContext<ContextType>({
   loading: true,
   error: undefined,

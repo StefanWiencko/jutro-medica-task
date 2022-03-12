@@ -4,6 +4,10 @@ export const getLandingPageData = gql`
     countries {
       name
       code
+      emoji
+      languages {
+        name
+      }
       continent {
         name
       }

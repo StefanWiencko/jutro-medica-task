@@ -4,7 +4,7 @@ import { SingleCountry } from "./components/SingleCountry";
 
 function App() {
   return (
-    <div className="">
+    <div className="w-100% max-w-screen-2xl p-7 pl-10">
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/:code" element={<SingleCountry />} />

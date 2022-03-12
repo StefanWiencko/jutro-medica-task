@@ -15,14 +15,20 @@ interface Props {
     }>
   >;
 }
+type SelectChangeHandler = (
+  option: SingleValue<{
+    value: string;
+    label: string;
+  }>
+) => void;
+type InputChangeHandler = (event: ChangeEvent<HTMLInputElement>) => void;
+
 export const FilterOptions: FC<Props> = ({ filterValue, setFilterValue }) => {
   const { data } = useContext(DataContext);
-  const inputChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+  const inputChangeHandler: InputChangeHandler = (event) => {
     setFilterValue((prev) => ({ ...prev, input: event.target.value }));
   };
-  const selectChangeHandler = (
-    option: SingleValue<{ value: string; label: string }>
-  ) => {
+  const selectChangeHandler: SelectChangeHandler = (option) => {
     if (option === null) return;
     setFilterValue((prev) => ({ ...prev, select: option.value }));
   };
@@ -31,13 +37,20 @@ export const FilterOptions: FC<Props> = ({ filterValue, setFilterValue }) => {
     label: continent.name,
   }));
   return (
-    <div>
+    <div className="flex flex-wrap ">
       <input
+        className="w-52 h-[38px] mr-4 focus:outline-blue-500 border-[1px] rounded border-gray-300 placeholder:text-[#838383] p-2 hover:border-[#b3b3b3] sm:mb-0 mb-4"
         onChange={inputChangeHandler}
         value={filterValue.input}
         type="text"
+        placeholder="Search by country name"
       />
-      <Select onChange={selectChangeHandler} options={options} />
+      <Select
+        className="w-52 "
+        onChange={selectChangeHandler}
+        options={options}
+        placeholder="Select continent"
+      />
     </div>
   );
 };

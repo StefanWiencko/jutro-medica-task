@@ -25,6 +25,7 @@ const filterData: FilterData = (data, { input, select }) =>
     if (!isDataMatchingInputValue) return false;
     return true;
   });
+
 export const LandingPage: FC = () => {
   const [filterValue, setFilterValue] = useState({ input: "", select: "" });
   const { loading, error, data } = useContext(DataContext);
@@ -32,18 +33,19 @@ export const LandingPage: FC = () => {
   if (loading) return <h3>Loading...</h3>;
   if (error) return <p>Error</p>;
   return (
-    <div>
-      <h2>Creative title</h2>
+    <div className="w-100% ">
+      <h2 className="text-2xl mb-6">Pick country to see more information</h2>
       <FilterOptions
         setFilterValue={setFilterValue}
         filterValue={filterValue}
       />
-      <main>
+      <main className="mt-6">
         <ul>
           {filteredData?.map((country) => (
-            <li key={country.code}>
-              <Link className="flex" to={country.code}>
-                {country.name} Code:{country.code}
+            <li className=" mb-6 w-fit" key={country.code}>
+              <Link tabIndex={-1} className=" flex flex-col" to={country.code}>
+                <strong>{country.name}</strong>
+                <small className="ml-2">Country Code: {country.code}</small>
               </Link>
             </li>
           ))}

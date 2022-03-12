@@ -2,6 +2,7 @@ import { ApolloError } from "@apollo/client";
 export interface Country {
   code: string;
   name: string;
+  emoji: string;
   continent: Continent;
   languages: Language[];
 }
