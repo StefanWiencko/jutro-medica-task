@@ -9,7 +9,9 @@ export const SingleCountry: FC = () => {
   const currentCounty = data?.countries.find(
     (country) => country.code === selectedCountryCode
   );
-  if (loading) return <h3>Loading...</h3>;
+  if (loading) {
+    return <h3>Loading...</h3>;
+  }
   if (currentCounty === undefined) {
     return <h3>Country with code {selectedCountryCode} does not exist</h3>;
   }

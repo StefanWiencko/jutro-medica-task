@@ -29,7 +29,9 @@ export const FilterOptions: FC<Props> = ({ filterValue, setFilterValue }) => {
     setFilterValue((prev) => ({ ...prev, input: event.target.value }));
   };
   const selectChangeHandler: SelectChangeHandler = (option) => {
-    if (option === null) return;
+    if (option === null) {
+      return;
+    }
     setFilterValue((prev) => ({ ...prev, select: option.value }));
   };
   const options = data?.continents.map((continent) => ({

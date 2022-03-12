@@ -20,9 +20,16 @@ const filterData: FilterData = (data, { input, select }) =>
       .startsWith(input.toLowerCase());
     const isDataMatchingSelectValue =
       select === "" || select === country.continent.name;
-    if (input === "" && select === "") return true;
-    if (!isDataMatchingSelectValue) return false;
-    if (!isDataMatchingInputValue) return false;
+
+    if (input === "" && select === "") {
+      return true;
+    }
+    if (!isDataMatchingSelectValue) {
+      return false;
+    }
+    if (!isDataMatchingInputValue) {
+      return false;
+    }
     return true;
   });
 
@@ -30,8 +37,12 @@ export const LandingPage: FC = () => {
   const [filterValue, setFilterValue] = useState({ input: "", select: "" });
   const { loading, error, data } = useContext(DataContext);
   const filteredData = filterData(data, filterValue);
-  if (loading) return <h3>Loading...</h3>;
-  if (error) return <p>Error</p>;
+  if (loading) {
+    return <h3>Loading...</h3>;
+  }
+  if (error) {
+    return <p>Error</p>;
+  }
   return (
     <div className="w-100% ">
       <h2 className="text-2xl mb-6">Pick country to see more information</h2>
