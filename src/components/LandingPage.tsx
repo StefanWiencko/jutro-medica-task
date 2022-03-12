@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { DataContext } from "../components/DataProvider";
 import { FilterOptions } from "./FilterOptions";
-import { LandingPageData, Country } from "../types";
+import { Data, Country } from "../types";
 
 type FilterData = (
-  a: LandingPageData | undefined,
+  a: Data | undefined,
   b: {
     input: string;
     select: string;

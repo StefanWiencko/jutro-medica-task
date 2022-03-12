@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-export const getLandingPageData = gql`
+export const getData = gql`
   {
     countries {
       name

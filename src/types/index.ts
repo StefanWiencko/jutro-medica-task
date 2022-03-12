@@ -17,7 +17,7 @@ interface Language {
   native: string;
   rtl: boolean;
 }
-export interface LandingPageData {
+export interface Data {
   continents: Continent[];
   countries: Country[];
 }
@@ -25,5 +25,5 @@ export interface LandingPageData {
 export interface ContextType {
   loading: boolean;
   error: ApolloError | undefined;
-  data: LandingPageData | undefined;
+  data: Data | undefined;
 }
